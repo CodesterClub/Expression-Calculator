@@ -8,7 +8,7 @@ import java.util.Stack;
  * @purpose language for compilation of mathematical expressions
  */
 public class ExpressionCalc {
-	double eval;
+	
 	private void display(final String[] exp) {
 		System.out.print("   ");
 		for(String out: exp) {
