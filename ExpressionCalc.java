@@ -26,7 +26,7 @@ public class ExpressionCalc {
 	 *            If true the function only searches for the element. If false,
 	 *            the function checks for matching paranthesis. False mode is 
 	 *            used by the method simplify().
-     *            @see simplify()For more details
+	 *            @see simplify()For more details
 	 */
 	private int nextElement(String[] array, String element, int from, boolean searchOnly) {
 		// stores opened brace count
