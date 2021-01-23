@@ -27,7 +27,7 @@ public class ExpressionCalc {
 	 * 		If true the function only searches for the element. If false,
 			the function checks for matching paranthesis. False mode is 
 			used by the method simplify().
-			@see simplify() For more details
+			@see simplify()For more details
 	 */
 	private int nextElement(String[] array, String element, int from, boolean searchOnly){
 		// Counts opened braces
@@ -168,7 +168,7 @@ public class ExpressionCalc {
 	 */
 	private String[] evaluate(String[] exp, Stack Symbols, String operator){
 		for(int i = 0; i < exp.length; i++){
-			if(exp[i].equals(operator)) {
+			if(exp[i].equals(operator)){
 				// evaluate the operator.
 				this.eval = calculate(operator, Double.parseDouble(exp[i - 1]), Double.parseDouble(exp[i + 1]));
 				/*
@@ -190,7 +190,7 @@ public class ExpressionCalc {
 		 * expression.
 		 */
 		try {
-			if (Symbols.peek().equals(operator)) {
+			if (Symbols.peek().equals(operator)){
 				Symbols.pop();
 			}
 		}
@@ -205,7 +205,7 @@ public class ExpressionCalc {
 	 * passed in through variable 'exp'.
 	 * 
 	 * For every scope, the part inside brackets is extracted using subarray.
-	 * This is then passed to simplify() recursively.
+	 * This is then passed to simplify()recursively.
 	 * 
 	 * Again a symbol stack is generated for the scope. As long as a bracket
 	 * pair stays inside the scope, another scope is generated for the part
@@ -252,7 +252,7 @@ public class ExpressionCalc {
 								 * recursive call that sends a part of 'exp'
 								 * from i+1 (ie position after opening brace)
 								 * till position before the closing brace to
-								 * evaluate() as the new scope.
+								 * evaluate()as the new scope.
 								 */
 								eval = simplify(subArray(exp, i + 1, next));
 								/*
@@ -278,7 +278,7 @@ public class ExpressionCalc {
 						}
 					}
 					/*
-					 * Stack.peek() and Stack.pop() methods throws a stack
+					 * Stack.peek()and Stack.pop()methods throws a stack
 					 * underflow exception.
 					 * 
 					 * Although we have the throws clause at the method
@@ -295,7 +295,7 @@ public class ExpressionCalc {
 						 * the evaluated scopes, and the brackets have been
 						 * excluded.
 						 */
-						if(Symbols.peek().equals("(")) {
+						if(Symbols.peek().equals("(")){
 							Symbols.pop();
 						}
 					}
@@ -344,12 +344,12 @@ public class ExpressionCalc {
 		System.out.println();
 		System.out.print("Tokenized expression: ");
 		// Print tokenized expression
-		for(String out: expression.split(" ")) {
+		for(String out: expression.split(" ")){
 			System.out.print(out + "  ");
 		}
 		System.out.println();
 		System.out.print("Evaluate (Y/N)?: ");
-		if(br.readLine().equalsIgnoreCase("Y")) {
+		if(br.readLine().equalsIgnoreCase("Y")){
 			/*
 			 * CAST TO FLOAT FOR BETTER LOOKING OUTPUT Use double for more
 			 * prescision.
