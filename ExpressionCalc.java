@@ -214,7 +214,7 @@ public class ExpressionCalc {
 			 * in the scope, that top is popped. Then the next symbol gets
 			 * evaluated till the stack empties.
 			 */
-			switch(Symbols.peek().toString()) {
+			switch(Symbols.pop().toString()) { //was peek
 				case "(":
 					/* NOTE that value of exp.length changes as more and more
 					 * scopes are evaluated.
@@ -260,7 +260,7 @@ public class ExpressionCalc {
 					 * Although we have the throws clause at the method
 					 * declaration, we catch this exception so that it doesn't
 					 * halt the progarm.
-					 */
+					 *
 					try {
 						/* A safety measure that ensures brackets are popped if
 						 * no open bracket remain in the expression. 
@@ -268,13 +268,13 @@ public class ExpressionCalc {
 						 * been evaluated and numbers have been put in place of
 						 * the evaluated scopes, and the brackets have been
 						 * excluded.
-						 */
+						 *
 						if(Symbols.peek().equals("(")) {
 							Symbols.pop();
 						}
 					}
 					catch(Exception e) {
-					}
+					}*/
 					break;
 				/* If you've understood how braces are handled in the first case
 				 * you can understand easily how other operators are being
