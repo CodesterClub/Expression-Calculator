@@ -291,8 +291,7 @@ public class ExpressionCalc {
 		System.out.println();
 		System.out.print("Evaluate (Y/N)?: ");
 		if(br.readLine().equalsIgnoreCase("Y")) {
-			/*
-			 * CAST TO FLOAT FOR BETTER LOOKING OUTPUT Use double for more
+			/* CAST TO FLOAT FOR BETTER LOOKING OUTPUT Use double for more
 			 * prescision.
 			 */
 			System.out.println("\nRESULT: " +(double)(em.simplify(expression.split(" "))));
