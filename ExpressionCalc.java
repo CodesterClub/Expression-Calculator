@@ -85,8 +85,8 @@ public class ExpressionCalc {
 	 * inside an expression scope.
 	 * An expression SCOPE is the part present b/w a pair of paranthesis
 	 */
-	private Stack Symbols(String[] exp)throws Exception {
-		Stack Symbols = new Stack();
+	private Stack<String> Symbols(String[] exp)throws Exception {
+		Stack<String> Symbols = new Stack<String>();
 		/* Pushing takes place from the lowest BEDMAS operator This causes it to
 		 * be placed at the end of the stack so that brackets are popped first.
 		 */
@@ -154,7 +154,7 @@ public class ExpressionCalc {
 	 *            returns 'eval'
 	 * @return String[] expression
 	 */
-	private String[] evaluate(String[] exp, Stack Symbols, String operator) {
+	private String[] evaluate(String[] exp, Stack<String> Symbols, String operator) {
 		for(int i = 0; i < exp.length; i++) {
 			if(exp[i].equals(operator)) {
 				// evaluate the operator.
@@ -201,7 +201,7 @@ public class ExpressionCalc {
 		System.out.println("\n>> Selected Scope:");
 		display(exp);
 		// A symbol stack is generated for scope inside 'exp'
-		Stack Symbols = Symbols(exp);
+		Stack<String> Symbols = Symbols(exp);
 		// eval carries the resultant value of any binary operation
 		double eval = 0.0;
 		/* Variable 'next' stores index of next operator/brace. by default it is
