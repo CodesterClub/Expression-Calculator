@@ -9,7 +9,7 @@ import java.util.Stack;
  */
 public class ExpressionCalc {
 	double eval;
-	private void display(String[] exp) {
+	private void display(final String[] exp) {
 		System.out.print("   ");
 		for(String out: exp) {
 			System.out.print(out + " ");
