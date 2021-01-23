@@ -180,6 +180,7 @@ public class ExpressionCalc {
 			}
 		}
 		catch(Exception e) {
+			System.out.println("Exception #3 occured");
 		}
 		return exp;
 	}
