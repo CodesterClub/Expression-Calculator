@@ -173,7 +173,9 @@ public class ExpressionCalc {
 		/* Pops 'operator' if no more 'operator' remain in the
 		 * expression.
 		 */
-		if (Symbols.peek().equals(operator)) Symbols.pop();
+		try {
+			if (Symbols.peek().equals(operator)) Symbols.pop();
+		catch(Exception e) {}
 		return exp;
 	}
 	/**
