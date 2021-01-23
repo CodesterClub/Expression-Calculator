@@ -28,7 +28,7 @@ public class ExpressionCalc {
 	 *            used by the method simplify().
 	 *            @see simplify()For more details
 	 */
-	private int nextElement(String[] array, String element, int from, boolean searchOnly) {
+	private int nextElement(final String[] array, String element, int from, boolean searchOnly) {
 		// stores opened brace count
 		int openingBraceCount = 0;
 		/* The 'from + 1' ensures that the method doesn't return back the index
