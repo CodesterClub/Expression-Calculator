@@ -141,7 +141,7 @@ public class ExpressionCalc {
 		return 0;
 	}
 	/**
-	 * This is, as I like to call it, 'THE CORE', method evaluate(). This method
+	 * This is, as I like to call it, 'THE CORE' method. This method
 	 * evaluates the scope and returns the resulting expression. 
 	 * @param exp
 	 *            The expression ie the part inside current scope
