@@ -280,7 +280,7 @@ public class ExpressionCalc {
 				/* If you've understood how braces are handled in the first case
 				 * you can understand easily how other operators are being
 				 * handled.
-				 *  Difference is that no new scopes are generated in the
+				 * Difference is that no new scopes are generated in the
 				 * following cases. Ie, no recursive calls in the following. All
 				 * recursive calls are for the brackets.
 				 */
