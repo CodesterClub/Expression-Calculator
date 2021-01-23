@@ -117,7 +117,6 @@ public class ExpressionCalc {
 		}
 		return Symbols;
 	}
-	
 	/**
 	 * This method takes in two numbers and the operator code and performs a
 	 * binary operation.
