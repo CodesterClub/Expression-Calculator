@@ -1,5 +1,8 @@
+Correct result should be 752
+
+OUTPUT:
 REMEMBER to put a space b/w every ELEMENT
-Enter expression: 
+Enter expression: ( ( ( ( 1 ^ 2 + 3 ^ 6 - 7 + 4 ) + ( ( 3 * 6 + 5 * 3 ) ) ) ) )
 Tokenized expression: (  (  (  (  1  ^  2  +  3  ^  6  -  7  +  4  )  +  (  (  3  *  6  +  5  *  3  )  )  )  )  )  
 Evaluate (Y/N)?: 
 >> Selected Scope:
