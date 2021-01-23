@@ -61,7 +61,7 @@ public class ExpressionCalc {
 	}
 	/** Just like substring but for an array
 	 */
-	private String[] subArray(String[] array, int from, int to) {
+	private String[] subArray(final String[] array, int from, int to) {
 		String[] output = new String[to - from];
 		for(int i = from, j = 0; i < to; i++, j++) {
 			output[j] = array[i];
