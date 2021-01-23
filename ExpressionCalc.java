@@ -171,17 +171,10 @@ public class ExpressionCalc {
 				display(exp);
 			}
 		}
-		/* Ensures 'operator' is popped if no more 'operator' remain in the
+		/* Pops 'operator' if no more 'operator' remain in the
 		 * expression.
 		 */
-		try {
-			if (Symbols.peek().equals(operator)) {
-				Symbols.pop();
-			}
-		}
-		catch(Exception e) {
-			System.out.println("Exception #3 occured");
-		}
+		if (Symbols.peek().equals(operator)) Symbols.pop();
 		return exp;
 	}
 	/**
