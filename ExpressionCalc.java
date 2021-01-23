@@ -30,10 +30,9 @@ public class ExpressionCalc {
 			@see simplify()For more details
 	 */
 	private int nextElement(String[] array, String element, int from, boolean searchOnly) {
-		// Counts opened braces
+		// stores opened brace count
 		int openingBraceCount = 0;
-		/*
-		 * The 'from + 1' ensures that the method doesn't return back the index
+		/* The 'from + 1' ensures that the method doesn't return back the index
 		 * of the element whose index we sent in as 'from'
 		 */
 		for(int i = from; i < array.length; i++) {
@@ -41,16 +40,14 @@ public class ExpressionCalc {
 			if(array[i].equals("(")& !searchOnly) {
 				openingBraceCount++;
 			}
-			/*
-			 * If a brace closes, a count is removed. If count is zero it means
+			/* If a brace closes, a count is removed. If count is zero it means
 			 * the current closing brace is the brace that closes our current
 			 * scope.
 			 */
 			else if(array[i].equals(")")& openingBraceCount > 0) {
 				openingBraceCount--;
 			}
-			/*
-			 * If any other element is searched for other than braces, the count
+			/* If any other element is searched for other than braces, the count
 			 * always stays zero. Hence, this is the condition executed for
 			 * non-brackets.
 			 */
@@ -58,15 +55,12 @@ public class ExpressionCalc {
 				return i;
 			}
 		}
-		/*
-		 * An else part in the loop will be useless as the statement can be put
+		/* An else part in the loop will be useless as the statement can be put
 		 * outside only.
 		 */
 		return -1;
 	}
-	
-	/**
-	 * Just like substring but for an array
+	/** Just like substring but for an array
 	 */
 	private String[] subArray(String[] array, int from, int to) {
 		String[] output = new String[to - from];
@@ -88,16 +82,13 @@ public class ExpressionCalc {
 	}
 	/**
 	 * The Symbols analyzer:
-	 * 
 	 * This method generates a stack containing the symbols that have been used
 	 * inside an expression scope.
-	 * 
 	 * An expression SCOPE is the part present b/w a pair of paranthesis
 	 */
 	private Stack Symbols(String[] exp)throws Exception {
 		Stack Symbols = new Stack();
-		/*
-		 * Pushing takes place from the lowest BEDMAS operator This causes it to
+		/* Pushing takes place from the lowest BEDMAS operator This causes it to
 		 * be placed at the end of the stack so that brackets are popped first.
 		 */
 		if(nextElement(exp, "-", 0, true)!= -1) {
@@ -117,8 +108,7 @@ public class ExpressionCalc {
 		}
 		if(nextElement(exp, "(", 0, true)!= -1) {
 			Symbols.push("(");
-			/*
-			 * THis part checks if the extracted scope has a closing
+			/* THis part checks if the extracted scope has a closing
 			 * paranthesis. If not, it throws an EXCEPTION and halts the
 			 * execution completely.
 			 */
@@ -134,8 +124,7 @@ public class ExpressionCalc {
 	 * binary operation.
 	 */
 	private double calculate(String operator, double oprnd1, double oprnd2) {
-		/*
-		 * No default case is needed as invalid operators are checked by the
+		/* No default case is needed as invalid operators are checked by the
 		 * symbol analyzer.
 		 */
 		switch(operator) {
@@ -171,13 +160,11 @@ public class ExpressionCalc {
 			if(exp[i].equals(operator)) {
 				// evaluate the operator.
 				this.eval = calculate(operator, Double.parseDouble(exp[i - 1]), Double.parseDouble(exp[i + 1]));
-				/*
-				 * Expression is modified by replacing the 'operator' and it's
+				/* Expression is modified by replacing the 'operator' and it's
 				 * operands with the result 'eval'.
 				 */
 				exp = concatArrays(subArray(exp, 0, i - 1), Double.toString(eval), subArray(exp, i + 2, exp.length));
-				/*
-				 * This makes the loop restart. This is done because the length
+				/* This makes the loop restart. This is done because the length
 				 * of 'exp' changes every time the previous statement is
 				 * executed.
 				 */
@@ -185,8 +172,7 @@ public class ExpressionCalc {
 				display(exp);
 			}
 		}
-		/*
-		 * Ensures 'operator' is popped if no more 'operator' remain in the
+		/* Ensures 'operator' is popped if no more 'operator' remain in the
 		 * expression.
 		 */
 		try {
@@ -219,24 +205,20 @@ public class ExpressionCalc {
 		Stack Symbols = Symbols(exp);
 		// eval carries the resultant value of any binary operation
 		double eval = 0.0;
-		/*
-		 * Variable 'next' stores index of next operator/brace. by default it is
+		/* Variable 'next' stores index of next operator/brace. by default it is
 		 * set to -1, in case the symbol is not found at all.
 		 */
 		int i = 0, next = -1;
 		// Until the table is empty
 		while(!Symbols.isEmpty()) {
-			/*
-			 * Selects top symbol from stack. When no more of that symbol remain
+			/* Selects top symbol from stack. When no more of that symbol remain
 			 * in the scope, that top is popped. Then the next symbol gets
 			 * evaluated till the stack empties.
 			 */
 			switch(Symbols.peek().toString()) {
 				case "(":
-					/*
-					 * NOTE that value of exp.length changes as more and more
+					/* NOTE that value of exp.length changes as more and more
 					 * scopes are evaluated.
-					 * 
 					 * As more scopes get evaluated, the length of the
 					 * expression becomes smaller.
 					 */
@@ -248,19 +230,16 @@ public class ExpressionCalc {
 							next = nextElement(exp, ")", i + 1, false);
 							// if brace is closed
 							if(next != -1) {
-								/*
-								 * recursive call that sends a part of 'exp'
+								/* Recursive call that sends a part of 'exp'
 								 * from i+1 (ie position after opening brace)
 								 * till position before the closing brace to
 								 * evaluate()as the new scope.
 								 */
 								eval = simplify(subArray(exp, i + 1, next));
-								/*
-								 * Once that sent scope gets evaluated, the
+								/* Once that sent scope gets evaluated, the
 								 * result in eval is put in the middle of the
 								 * parent expression (from which the scope was
 								 * cut and sent).
-								 * 
 								 * The braces are excluded during concatination
 								 * process. This forms a new expression, ready
 								 * to be evaluated agoin during next while
@@ -277,19 +256,15 @@ public class ExpressionCalc {
 							}
 						}
 					}
-					/*
-					 * Stack.peek()and Stack.pop()methods throws a stack
-					 * underflow exception.
-					 * 
+					/* Stack.peek()and Stack.pop()methods throws a stack
+					 * underflow exception. 
 					 * Although we have the throws clause at the method
 					 * declaration, we catch this exception so that it doesn't
 					 * halt the progarm.
 					 */
 					try {
-						/*
-						 * A safety measure that ensures brackets are popped if
-						 * no open bracket remain in the expression.
-						 * 
+						/* A safety measure that ensures brackets are popped if
+						 * no open bracket remain in the expression. 
 						 * This situation arises when all scopes of a scope have
 						 * been evaluated and numbers have been put in place of
 						 * the evaluated scopes, and the brackets have been
@@ -302,12 +277,10 @@ public class ExpressionCalc {
 					catch(Exception e) {
 					}
 					break;
-				/*
-				 * If you've understood how braces are handled in the first case
+				/* If you've understood how braces are handled in the first case
 				 * you can understand easily how other operators are being
 				 * handled.
-				 * 
-				 * Difference is that no new scopes are generated in the
+				 *  Difference is that no new scopes are generated in the
 				 * following cases. Ie, no recursive calls in the following. All
 				 * recursive calls are for the brackets.
 				 */
