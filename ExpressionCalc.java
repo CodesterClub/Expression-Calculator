@@ -277,7 +277,7 @@ public class ExpressionCalc {
 		// returns the evaluated value after case completion
 		return eval;
 	}
-	public static void main(String[] args)throws Exception {
+	public static void main(String[] args) throws Exception {
 		ExpressionCalc em = new ExpressionCalc();
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		System.out.print("REMEMBER to put a space b/w every ELEMENT\nEnter expression: ");
