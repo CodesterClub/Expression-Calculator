@@ -1,0 +1,53 @@
+REMEMBER to put a space b/w every ELEMENT
+Enter expression: ( ( ( ( 1 ^ 2 + 3 ^ 6 - 7 + 4 ) + ( ( 3 * 6 + 5 * 3 ) ) ) ) )
+Tokenized expression: (  (  (  (  1  ^  2  +  3  ^  6  -  7  +  4  )  +  (  (  3  *  6  +  5  *  3  )  )  )  )  )  
+Evaluate (Y/N)?: y
+>> Selected Scope:
+   ( ( ( ( 1 ^ 2 + 3 ^ 6 - 7 + 4 ) + ( ( 3 * 6 + 5 * 3 ) ) ) ) ) 
+
+>> Selected Scope:
+   ( ( ( 1 ^ 2 + 3 ^ 6 - 7 + 4 ) + ( ( 3 * 6 + 5 * 3 ) ) ) ) 
+
+>> Selected Scope:
+   ( ( 1 ^ 2 + 3 ^ 6 - 7 + 4 ) + ( ( 3 * 6 + 5 * 3 ) ) ) 
+
+>> Selected Scope:
+   ( 1 ^ 2 + 3 ^ 6 - 7 + 4 ) + ( ( 3 * 6 + 5 * 3 ) ) 
+
+>> Selected Scope:
+   1 ^ 2 + 3 ^ 6 - 7 + 4 
+   1.0 + 3 ^ 6 - 7 + 4 
+   1.0 + 729.0 - 7 + 4 
+   730.0 - 7 + 4 
+   730.0 - 11.0 
+   719.0 
+>> Left scope
+
+   719.0 + ( ( 3 * 6 + 5 * 3 ) ) 
+
+>> Selected Scope:
+   ( 3 * 6 + 5 * 3 ) 
+
+>> Selected Scope:
+   3 * 6 + 5 * 3 
+   18.0 + 5 * 3 
+   18.0 + 15.0 
+   33.0 
+>> Left scope
+
+   33.0 
+>> Left scope
+
+   719.0 + 33.0 
+   752.0 
+>> Left scope
+
+   752.0 
+>> Left scope
+
+   752.0 
+>> Left scope
+
+   752.0 
+
+RESULT: 752.0
