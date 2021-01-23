@@ -8,7 +8,7 @@ import java.util.Stack;
  * @purpose language for compilation of mathematical expressions
  */
 public class ExpressionCalc {
-	double eval;
+	
 	private void display(final String[] exp) {
 		System.out.print("   ");
 		for(String out: exp) {
@@ -153,7 +153,8 @@ public class ExpressionCalc {
 	 *            returns 'eval'
 	 * @return String[] expression
 	 */
-	private String[] evaluate(String[] exp, Stack<String> Symbols, String operator) {
+	private double evaluate(String[] exp, Stack<String> Symbols, String operator) {
+		double eval = 0.0;
 		for(int i = 0; i < exp.length; i++) {
 			if(exp[i].equals(operator)) {
 				// evaluate the operator.
@@ -176,7 +177,7 @@ public class ExpressionCalc {
 		try {
 			if (Symbols.peek().equals(operator)) Symbols.pop();
 		} catch(Exception e) {}
-		ISSUE_1: return exp;
+		ISSUE_1: return eval;
 	}
 	/**
 	 * Expression simplification takes place here
@@ -255,24 +256,19 @@ public class ExpressionCalc {
 				 * recursive calls are for the brackets.
 				 */
 				case "^":
-					ISSUE_1: exp = evaluate(exp, Symbols, "^");
-					eval = this.eval;
+					ISSUE_1: eval = evaluate(exp, Symbols, "^");
 					break;
 				case "/":
-					ISSUE_1: exp = evaluate(exp, Symbols, "/");
-					eval = this.eval;
+					ISSUE_1: eval = evaluate(exp, Symbols, "/");
 					break;
 				case "*":
-					ISSUE_1: exp = evaluate(exp, Symbols, "*");
-					eval = this.eval;
+					ISSUE_1: eval = evaluate(exp, Symbols, "*");
 					break;
 				case "+":
-					ISSUE_1: exp = evaluate(exp, Symbols, "+");
-					eval = this.eval;
+					ISSUE_1: eval = evaluate(exp, Symbols, "+");
 					break;
 				case "-":
-					ISSUE_1: exp = evaluate(exp, Symbols, "-");
-					eval = this.eval;
+					ISSUE_1: eval = evaluate(exp, Symbols, "-");
 					break;
 			}
 		// returns the evaluated value after case completion
