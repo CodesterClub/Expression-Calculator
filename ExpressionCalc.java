@@ -8,7 +8,7 @@ import java.util.Stack;
  * @name EmLang ( Em for Mathematics )
  * @purpose language for compilation of mathematical expressions
  */
-public class EmLang {
+public class ExpressionCalc {
 	double eval;
 	private void display( String[] exp ) {
 		System.out.print( "   " );
