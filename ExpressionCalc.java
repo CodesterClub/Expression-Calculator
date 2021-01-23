@@ -153,7 +153,7 @@ public class ExpressionCalc {
 	 *            returns 'eval'
 	 * @return String[] expression
 	 */
-	private String[] evaluate(String[] exp, Stack<String> Symbols, String operator) {
+	private double evaluate(String[] exp, Stack<String> Symbols, String operator) {
 		for(int i = 0; i < exp.length; i++) {
 			if(exp[i].equals(operator)) {
 				// evaluate the operator.
@@ -176,7 +176,7 @@ public class ExpressionCalc {
 		try {
 			if (Symbols.peek().equals(operator)) Symbols.pop();
 		} catch(Exception e) {}
-		return exp;
+		return eval;
 	}
 	/**
 	 * Expression simplification takes place here
@@ -255,24 +255,24 @@ public class ExpressionCalc {
 				 * recursive calls are for the brackets.
 				 */
 				case "^":
-					exp = evaluate(exp, Symbols, "^");
-					eval = this.eval;
+					eval = evaluate(exp, Symbols, "^");
+					// eval = this.eval;
 					break;
 				case "/":
-					exp = evaluate(exp, Symbols, "/");
-					eval = this.eval;
+					eval = evaluate(exp, Symbols, "/");
+					// eval = this.eval;
 					break;
 				case "*":
-					exp = evaluate(exp, Symbols, "*");
-					eval = this.eval;
+					eval = evaluate(exp, Symbols, "*");
+					// eval = this.eval;
 					break;
 				case "+":
-					exp = evaluate(exp, Symbols, "+");
-					eval = this.eval;
+					eval = evaluate(exp, Symbols, "+");
+					// eval = this.eval;
 					break;
 				case "-":
-					exp = evaluate(exp, Symbols, "-");
-					eval = this.eval;
+					eval = evaluate(exp, Symbols, "-");
+					// eval = this.eval;
 					break;
 			}
 		// returns the evaluated value after case completion
