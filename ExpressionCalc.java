@@ -154,10 +154,11 @@ public class ExpressionCalc {
 	 * @return String[] expression
 	 */
 	private double evaluate(String[] exp, Stack<String> Symbols, String operator) {
+		double eval = 0;
 		for(int i = 0; i < exp.length; i++) {
 			if(exp[i].equals(operator)) {
 				// evaluate the operator.
-				this.eval = calculate(operator, Double.parseDouble(exp[i - 1]), Double.parseDouble(exp[i + 1]));
+				eval = calculate(operator, Double.parseDouble(exp[i - 1]), Double.parseDouble(exp[i + 1]));
 				/* Expression is modified by replacing the 'operator' and it's
 				 * operands with the result 'eval'.
 				 */
