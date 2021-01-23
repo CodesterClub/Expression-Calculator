@@ -72,7 +72,7 @@ public class ExpressionCalc {
 	 * Joins two arrays with a string eval in b/w them
 	 * @param eval The element sandwiched b/w the two arrays
 	 */
-	private String[] concatArrays(String[] A, String eval, String[] B) {
+	private String[] concatArrays(final String[] A, String eval, String[] B) {
 		String[] output = new String[A.length + B.length + 1];
 		System.arraycopy(A, 0, output, 0, A.length);
 		output[A.length] = eval;
