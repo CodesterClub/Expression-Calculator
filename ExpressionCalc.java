@@ -85,7 +85,7 @@ public class ExpressionCalc {
 	 * inside an expression scope.
 	 * An expression SCOPE is the part present b/w a pair of paranthesis
 	 */
-	private Stack<String> Symbols(String[] exp)throws Exception {
+	private Stack<String> Symbols(final String[] exp)throws Exception {
 		Stack<String> Symbols = new Stack<String>();
 		/* Pushing takes place from the lowest BEDMAS operator This causes it to
 		 * be placed at the end of the stack so that brackets are popped first.
