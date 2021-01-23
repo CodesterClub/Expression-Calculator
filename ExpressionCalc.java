@@ -175,7 +175,7 @@ public class ExpressionCalc {
 		 */
 		try {
 			if (Symbols.peek().equals(operator)) Symbols.pop();
-		catch(Exception e) {}
+		} catch(Exception e) {}
 		return exp;
 	}
 	/**
