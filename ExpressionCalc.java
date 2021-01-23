@@ -209,23 +209,22 @@ public class ExpressionCalc {
 		 */
 		int i = 0, next = -1;
 		// Until the table is empty
-		while(!Symbols.isEmpty()) {
+		while(!Symbols.isEmpty())
 			/* Selects top symbol from stack. When no more of that symbol remain
 			 * in the scope, that top is popped. Then the next symbol gets
 			 * evaluated till the stack empties.
 			 */
-			switch(Symbols.pop().toString()) { //was peek
+			switch(Symbols.pop().toString()) {
 				case "(":
 					/* NOTE that value of exp.length changes as more and more
 					 * scopes are evaluated.
 					 * As more scopes get evaluated, the length of the
 					 * expression becomes smaller.
 					 */
-					for(i = 0; i < exp.length; i++) {
+					for(i = 0; i < exp.length; i++)
 						// If an opening brace is found
 						if(exp[i].equals("(")) {
-							// next stores index of next closing
-							// brace
+							// next stores index of next closing brace
 							next = nextElement(exp, ")", i + 1, false);
 							// if brace is closed
 							if(next != -1) {
@@ -250,31 +249,8 @@ public class ExpressionCalc {
 								// as a step of evaluation
 								display(exp);
 							}
-							else {
-								break;
-							}
+							else break;
 						}
-					}
-					/* Stack.peek()and Stack.pop()methods throws a stack
-					 * underflow exception. 
-					 * Although we have the throws clause at the method
-					 * declaration, we catch this exception so that it doesn't
-					 * halt the progarm.
-					 *
-					try {
-						/* A safety measure that ensures brackets are popped if
-						 * no open bracket remain in the expression. 
-						 * This situation arises when all scopes of a scope have
-						 * been evaluated and numbers have been put in place of
-						 * the evaluated scopes, and the brackets have been
-						 * excluded.
-						 *
-						if(Symbols.peek().equals("(")) {
-							Symbols.pop();
-						}
-					}
-					catch(Exception e) {
-					}*/
 					break;
 				/* If you've understood how braces are handled in the first case
 				 * you can understand easily how other operators are being
@@ -304,7 +280,6 @@ public class ExpressionCalc {
 					eval = this.eval;
 					break;
 			}
-		}
 		// returns the evaluated value after case completion
 		return eval;
 	}
