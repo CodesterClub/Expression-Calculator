@@ -285,7 +285,7 @@ public class ExpressionCalc {
 		return eval;
 	}
 	public static void main(String[] args)throws Exception {
-		EmLang em = new EmLang();
+		ExpressionCalc em = new ExpressionCalc();
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		System.out.print("REMEMBER to put a space b/w every ELEMENT\nEnter expression: ");
 		String expression = br.readLine();
