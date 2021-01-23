@@ -5,15 +5,15 @@ import java.util.Stack;
 /**
  * @version 3
  * @date 31-Dec-2020
- * @name EmLang(Em for Mathematics )
+ * @name EmLang(Em for Mathematics)
  * @purpose language for compilation of mathematical expressions
  */
 public class ExpressionCalc {
 	double eval;
 	private void display(String[] exp){
-		System.out.print("   " );
+		System.out.print("   ");
 		for(String out: exp){
-			System.out.print(out + " " );
+			System.out.print(out + " ");
 		}
 		System.out.println();
 	}
@@ -81,9 +81,9 @@ public class ExpressionCalc {
 	 */
 	private String[] concatArrays(String[] A, String eval, String[] B){
 		String[] output = new String[A.length + B.length + 1];
-		System.arraycopy(A, 0, output, 0, A.length );
+		System.arraycopy(A, 0, output, 0, A.length);
 		output[A.length] = eval;
-		System.arraycopy(B, 0, output, A.length + 1, B.length );
+		System.arraycopy(B, 0, output, A.length + 1, B.length);
 		return output;
 	}
 	/**
@@ -101,29 +101,29 @@ public class ExpressionCalc {
 		 * be placed at the end of the stack so that brackets are popped first.
 		 */
 		if(nextElement(exp, "-", 0, true)!= -1){
-			Symbols.push("-" );
+			Symbols.push("-");
 		}
 		if(nextElement(exp, "+", 0, true)!= -1){
-			Symbols.push("+" );
+			Symbols.push("+");
 		}
 		if(nextElement(exp, "*", 0, true)!= -1){
-			Symbols.push("*" );
+			Symbols.push("*");
 		}
 		if(nextElement(exp, "/", 0, true)!= -1){
-			Symbols.push("/" );
+			Symbols.push("/");
 		}
 		if(nextElement(exp, "^", 0, true)!= -1){
-			Symbols.push("^" );
+			Symbols.push("^");
 		}
 		if(nextElement(exp, "(", 0, true)!= -1){
-			Symbols.push("(" );
+			Symbols.push("(");
 			/*
 			 * THis part checks if the extracted scope has a closing
 			 * paranthesis. If not, it throws an EXCEPTION and halts the
 			 * execution completely.
 			 */
 			if(nextElement(exp, ")", 0, true)== -1){
-				throw new Exception("\nMISSING CLOSING PARANTHESIS" );
+				throw new Exception("\nMISSING CLOSING PARANTHESIS");
 			}
 		}
 		return Symbols;
@@ -140,7 +140,7 @@ public class ExpressionCalc {
 		 */
 		switch(operator){
 			case "^":
-				return Math.pow(oprnd1, oprnd2 );
+				return Math.pow(oprnd1, oprnd2);
 			case "/":
 				return oprnd1 / oprnd2;
 			case "*":
@@ -170,19 +170,19 @@ public class ExpressionCalc {
 		for(int i = 0; i < exp.length; i++){
 			if(exp[i].equals(operator)) {
 				// evaluate the operator.
-				this.eval = calculate(operator, Double.parseDouble(exp[i - 1] ), Double.parseDouble(exp[i + 1]));
+				this.eval = calculate(operator, Double.parseDouble(exp[i - 1]), Double.parseDouble(exp[i + 1]));
 				/*
 				 * Expression is modified by replacing the 'operator' and it's
 				 * operands with the result 'eval'.
 				 */
-				exp = concatArrays(subArray(exp, 0, i - 1 ), Double.toString(eval ), subArray(exp, i + 2, exp.length));
+				exp = concatArrays(subArray(exp, 0, i - 1), Double.toString(eval), subArray(exp, i + 2, exp.length));
 				/*
 				 * This makes the loop restart. This is done because the length
 				 * of 'exp' changes every time the previous statement is
 				 * executed.
 				 */
 				i = 0;
-				display(exp );
+				display(exp);
 			}
 		}
 		/*
@@ -190,7 +190,7 @@ public class ExpressionCalc {
 		 * expression.
 		 */
 		try {
-			if (Symbols.peek().equals(operator )) {
+			if (Symbols.peek().equals(operator)) {
 				Symbols.pop();
 			}
 		}
@@ -213,10 +213,10 @@ public class ExpressionCalc {
 	 */
 	private double simplify(String[] exp)throws Exception {
 		// displays current state of evaluation
-		System.out.println("\n>> Selected Scope:" );
-		display(exp );
+		System.out.println("\n>> Selected Scope:");
+		display(exp);
 		// A symbol stack is generated for scope inside 'exp'
-		Stack Symbols = Symbols(exp );
+		Stack Symbols = Symbols(exp);
 		// eval carries the resultant value of any binary operation
 		double eval = 0.0;
 		/*
@@ -245,7 +245,7 @@ public class ExpressionCalc {
 						if(exp[i].equals("(")){
 							// next stores index of next closing
 							// brace
-							next = nextElement(exp, ")", i + 1, false );
+							next = nextElement(exp, ")", i + 1, false);
 							// if brace is closed
 							if(next != -1){
 								/*
@@ -266,11 +266,11 @@ public class ExpressionCalc {
 								 * to be evaluated agoin during next while
 								 * iteration.
 								 */
-								exp = concatArrays(subArray(exp, 0, i ), Double.toString(eval ), subArray(exp, next + 1, exp.length));
-								System.out.println(">> Left scope\n" );
+								exp = concatArrays(subArray(exp, 0, i), Double.toString(eval), subArray(exp, next + 1, exp.length));
+								System.out.println(">> Left scope\n");
 								// displays the new expression
 								// as a step of evaluation
-								display(exp );
+								display(exp);
 							}
 							else {
 								break;
@@ -312,23 +312,23 @@ public class ExpressionCalc {
 				 * recursive calls are for the brackets.
 				 */
 				case "^":
-					exp = evaluate(exp, Symbols, "^" );
+					exp = evaluate(exp, Symbols, "^");
 					eval = this.eval;
 					break;
 				case "/":
-					exp = evaluate(exp, Symbols, "/" );
+					exp = evaluate(exp, Symbols, "/");
 					eval = this.eval;
 					break;
 				case "*":
-					exp = evaluate(exp, Symbols, "*" );
+					exp = evaluate(exp, Symbols, "*");
 					eval = this.eval;
 					break;
 				case "+":
-					exp = evaluate(exp, Symbols, "+" );
+					exp = evaluate(exp, Symbols, "+");
 					eval = this.eval;
 					break;
 				case "-":
-					exp = evaluate(exp, Symbols, "-" );
+					exp = evaluate(exp, Symbols, "-");
 					eval = this.eval;
 					break;
 			}
@@ -339,26 +339,26 @@ public class ExpressionCalc {
 	public static void main(String[] args)throws Exception {
 		EmLang em = new EmLang();
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		System.out.print("REMEMBER to put a space b/w every ELEMENT\nEnter expression: " );
+		System.out.print("REMEMBER to put a space b/w every ELEMENT\nEnter expression: ");
 		String expression = br.readLine();
 		System.out.println();
-		System.out.print("Tokenized expression: " );
+		System.out.print("Tokenized expression: ");
 		// Print tokenized expression
 		for(String out: expression.split(" ")) {
-			System.out.print(out + "  " );
+			System.out.print(out + "  ");
 		}
 		System.out.println();
-		System.out.print("Evaluate (Y/N)?: " );
+		System.out.print("Evaluate (Y/N)?: ");
 		if(br.readLine().equalsIgnoreCase("Y")) {
 			/*
 			 * CAST TO FLOAT FOR BETTER LOOKING OUTPUT Use double for more
 			 * prescision.
 			 */
-			System.out.println("\nRESULT: " +(double )(em.simplify(expression.split(" "))));
+			System.out.println("\nRESULT: " +(double)(em.simplify(expression.split(" "))));
 		}
 		else {
-			System.err.println("HALTED BY USER!" );
-			System.exit(5 );
+			System.err.println("HALTED BY USER!");
+			System.exit(5);
 		}
 	}
 }
