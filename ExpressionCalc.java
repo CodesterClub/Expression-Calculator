@@ -21,12 +21,12 @@ public class ExpressionCalc {
 	 * will return the next matching closing brace only during case "(" in
 	 * function evaluate().
 	 * @param from 
-	 * 	The position from which searching will take place
+	 *            The position from which searching will take place
 	 * @param searchOnly
-	 * 	If true the function only searches for the element. If false,
-			the function checks for matching paranthesis. False mode is 
-			used by the method simplify().
-			@see simplify()For more details
+	 *            If true the function only searches for the element. If false,
+	 *            the function checks for matching paranthesis. False mode is 
+	 *            used by the method simplify().
+     *            @see simplify()For more details
 	 */
 	private int nextElement(String[] array, String element, int from, boolean searchOnly) {
 		// stores opened brace count
