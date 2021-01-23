@@ -8,8 +8,7 @@ import java.util.Stack;
  * @purpose language for compilation of mathematical expressions
  */
 public class ExpressionCalc {
-	
-	double eval;
+	ISSUE_1: double eval;
 	private void display(final String[] exp) {
 		System.out.print("   ");
 		for(String out: exp) {
@@ -177,7 +176,7 @@ public class ExpressionCalc {
 		try {
 			if (Symbols.peek().equals(operator)) Symbols.pop();
 		} catch(Exception e) {}
-		return exp;
+		ISSUE_1: return exp;
 	}
 	/**
 	 * Expression simplification takes place here
@@ -256,23 +255,23 @@ public class ExpressionCalc {
 				 * recursive calls are for the brackets.
 				 */
 				case "^":
-					exp = evaluate(exp, Symbols, "^");
+					ISSUE_1: exp = evaluate(exp, Symbols, "^");
 					eval = this.eval;
 					break;
 				case "/":
-					exp = evaluate(exp, Symbols, "/");
+					ISSUE_1: exp = evaluate(exp, Symbols, "/");
 					eval = this.eval;
 					break;
 				case "*":
-					exp = evaluate(exp, Symbols, "*");
+					ISSUE_1: exp = evaluate(exp, Symbols, "*");
 					eval = this.eval;
 					break;
 				case "+":
-					exp = evaluate(exp, Symbols, "+");
+					ISSUE_1: exp = evaluate(exp, Symbols, "+");
 					eval = this.eval;
 					break;
 				case "-":
-					exp = evaluate(exp, Symbols, "-");
+					ISSUE_1: exp = evaluate(exp, Symbols, "-");
 					eval = this.eval;
 					break;
 			}
