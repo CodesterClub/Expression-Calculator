@@ -8,7 +8,7 @@ import java.util.Stack;
  * @name EmLang(Em for Mathematics)
  * @purpose language for compilation of mathematical expressions
  */
-public class ExpressionCalc {
+public class ExpressionCalc{
 	double eval;
 	private void display(String[] exp){
 		System.out.print("   ");
@@ -94,7 +94,7 @@ public class ExpressionCalc {
 	 * 
 	 * An expression SCOPE is the part present b/w a pair of paranthesis
 	 */
-	private Stack Symbols(String[] exp)throws Exception {
+	private Stack Symbols(String[] exp)throws Exception{
 		Stack Symbols = new Stack();
 		/*
 		 * Pushing takes place from the lowest BEDMAS operator This causes it to
@@ -160,7 +160,7 @@ public class ExpressionCalc {
 	 * @param Symbols
 	 *            Symbols stack for current scope
 	 * @param operator
-	 *            Operator value from { "^", "/", "*", "+", "-" }
+	 *            Operator value from{ "^", "/", "*", "+", "-" }
 	 * @param eval
 	 *            Passed in so that incase operator is not found the function
 	 *            returns 'eval'
@@ -189,7 +189,7 @@ public class ExpressionCalc {
 		 * Ensures 'operator' is popped if no more 'operator' remain in the
 		 * expression.
 		 */
-		try {
+		try{
 			if (Symbols.peek().equals(operator)){
 				Symbols.pop();
 			}
@@ -211,7 +211,7 @@ public class ExpressionCalc {
 	 * pair stays inside the scope, another scope is generated for the part
 	 * inside the brackets. When no brackets remain, evaluation begins.
 	 */
-	private double simplify(String[] exp)throws Exception {
+	private double simplify(String[] exp)throws Exception{
 		// displays current state of evaluation
 		System.out.println("\n>> Selected Scope:");
 		display(exp);
@@ -272,7 +272,7 @@ public class ExpressionCalc {
 								// as a step of evaluation
 								display(exp);
 							}
-							else {
+							else{
 								break;
 							}
 						}
@@ -285,7 +285,7 @@ public class ExpressionCalc {
 					 * declaration, we catch this exception so that it doesn't
 					 * halt the progarm.
 					 */
-					try {
+					try{
 						/*
 						 * A safety measure that ensures brackets are popped if
 						 * no open bracket remain in the expression.
@@ -336,7 +336,7 @@ public class ExpressionCalc {
 		// returns the evaluated value after case completion
 		return eval;
 	}
-	public static void main(String[] args)throws Exception {
+	public static void main(String[] args)throws Exception{
 		EmLang em = new EmLang();
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		System.out.print("REMEMBER to put a space b/w every ELEMENT\nEnter expression: ");
@@ -356,7 +356,7 @@ public class ExpressionCalc {
 			 */
 			System.out.println("\nRESULT: " +(double)(em.simplify(expression.split(" "))));
 		}
-		else {
+		else{
 			System.err.println("HALTED BY USER!");
 			System.exit(5);
 		}
